@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title
+      | CatHotwire
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  body
+    .vh-100
+      .container-fluid
+        .row
+          .ps-0[style="width: 200px;"]
+          .ps-0.position-fixed[style="width: 200px;"]
+            = render "sidebar"
+          .col.my-4
+            = yield

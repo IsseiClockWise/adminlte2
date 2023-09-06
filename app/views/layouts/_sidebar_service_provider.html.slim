@@ -1,0 +1,52 @@
+ul.nav.nav-pills.nav-sidebar.flex-column role="menu" data-widget="treeview" data-accordion="false"
+  li.nav-item
+    = link_to service_provider_dashboard_index_path, class: "nav-link #{active_if("dashboard")}" do
+      i.nav-icon.fas.fa-tachometer-alt
+      p ダッシュボード
+  / li.nav-item
+  /   = link_to shifts_path, class: "nav-link #{active_if("shifts")}" do
+  /     i.nav-icon.fas.fa-calendar.fa-regular
+  /     p シフト管理
+  li.nav-item 
+    = link_to attendances_path, class: "nav-link #{active_if("attendances")}" do
+      i.nav-icon.fas.fa-clock.fa-regular
+      p 出退勤
+  li.nav-item
+    / a.nav-link href="#"
+    = link_to delivery_results_path, class: "nav-link #{active_if("delivery_results")}" do
+      i.nav-icon.fas.fa-box
+      p 個建管理
+  / li.nav-item
+  /   = link_to payment_notifications_path, class: "nav-link #{active_if(["payment_notifications", "user_invoices"])}" do
+  /     i.nav-icon.fas.fa-money-bill
+  /     p 支払い
+  li.nav-item
+    = link_to contractor_invoices_path, class: "nav-link #{active_if("contractor_invoices")}" do
+      i.nav-icon.fas.fa-money-bill
+      p 請求
+
+  li.nav-header レポート
+  li.nav-item
+    = link_to report_index_path, class: "nav-link #{active_if('report')}"
+      i.nav-icon.fas.fa-chart-simple
+      p 売上
+  li.nav-item
+    = link_to comparison_report_index_path, class: "nav-link #{active_if('comparison_report')}"
+      i.nav-icon.fas.fa-chart-simple
+      p 前年比較
+
+  li.nav-header 各種設定
+  li.nav-item
+    = link_to users_path, class: "nav-link #{active_if("users")}" do
+      i.nav-icon.fas.fa-user
+      p ユーザー
+  li.nav-item
+    / a.nav-link href="#"
+    = link_to contractors_path, class: "nav-link #{active_if("contractors")}" do
+      i.nav-icon.fas.fa-building
+      p 元請け企業
+  li.nav-item
+    / a.nav-link href="#"
+    = link_to edit_setting_path(current_service_provider), class: "nav-link #{active_if("settings")}" do
+      i.nav-icon.fas.fa-gear
+      p その他

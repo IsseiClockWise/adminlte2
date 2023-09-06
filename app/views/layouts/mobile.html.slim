@@ -1,0 +1,46 @@
+doctype html
+html style="height: 100%"
+  head
+    title
+      | ケイラク
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = favicon_link_tag('favicon.ico')
+  body style="background: #f6f5f4"
+    .container-fluid
+      main.w-100 style="padding-bottom: 90px;"
+        .row.px-0.align-items-center.border-bottom style="background: #fafafa; height: 56px"
+          = yield(:header)
+        = yield
+
+    .btn-group.fixed-bottom.w-100.border-top
+      = link_to crew_pages_path, class: "btn btn-light #{active_if('crew_pages')}" do 
+        .d-flex.flex-column.text-gray
+          i.fa-regular.fa-clock.fa style="font-size: 25px;"
+          span.mt-1 style="font-size: 10px;" 出退勤
+      = link_to shift_preferences_path, class: "btn btn-light #{active_if('shift_preferences')}" do 
+        .d-flex.flex-column.text-gray
+          i.fa-regular.fa-truck.fa style="font-size: 25px;"
+          span.mt-1 style="font-size: 10px;" シフト
+      = link_to crew_pns_path, class: "btn btn-light #{active_if('crew_pns')}" do 
+        .d-flex.flex-column.text-gray
+          i.fa-regular.fa-file-lines.fa style="font-size: 25px;"
+          span.mt-1 style="font-size: 10px;" 支払通知書
+      = link_to incomes_path, class: "btn btn-light #{active_if('incomes')}" do 
+        .d-flex.flex-column.text-gray
+          i.fa-regular.fa-chart-simple.fa style="font-size: 25px;"
+          span.mt-1 style="font-size: 10px;" レポート
+      = link_to crew_profile_path, class: "btn btn-light #{active_if('crew_profiles')}" do 
+        .d-flex.flex-column.text-gray
+          i.fa-regular.fa-person.fa style="font-size: 25px;"
+          span.mt-1 style="font-size: 10px;" クルー
+
+    = turbo_frame_tag "modal"
+    / ローディングアイコンの表示
+    #loading-icon.position-absolute.top-50.start-50.translate-middle.bg-light.p-3.text-center.border data-controller="loading" hidden=true data-action="turbo:before-fetch-request@document->loading#showLoading turbo:before-fetch-response@document->loading#hideLoading" data-loading-target="spinner" style="z-index: 100"
+      .mb-3
+        i.fas.fa-spinner.fa-spin.fa-2x
+      .mb-0 読み込み中...

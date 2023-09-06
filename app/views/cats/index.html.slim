@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Cats
+
+#cats
+  - @cats.each do |cat|
+    == render cat
+    p
+      = link_to "Show this cat", cat
+
+= link_to "New cat", new_cat_path
